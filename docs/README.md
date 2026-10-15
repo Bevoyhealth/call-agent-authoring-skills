@@ -9,7 +9,7 @@ This repository holds skills in the Agent Skills format: one folder for each ski
 
 Each consumer has a `call-agent-authoring-skills.lock` file with one commit SHA of this repository and a script that copies that commit into its own skills folder. The copy is committed in the consumer together with the lock file. A change here reaches a consumer only when its lock file moves to a new commit.
 
-The repository is private. Customer access, if it comes, goes through a separate route (ENG-4112).
+The repository is public. The Resia gateway also serves these skills on public pages (ENG-4129).
 
 ## Rules for every skill
 
