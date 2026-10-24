@@ -20,18 +20,20 @@ To wait and listen, the agent writes only `[[SILENCE]]`. To end the call, it wri
 - A screener is a live route to the person. The agent stays on the line.
 - If the agent hangs up on a screener, it loses a person that it can reach.
 - A recording announces and does not ask. Examples: "You have reached...", "Leave a message after the tone".
-- When the agent cannot tell a screener from a recording, it waits once. Then it says the screener line, not the opener. The screener line contains no private facts.
+- When the agent cannot tell a screener from a recording, it waits once. Then it says the screener line.
 
 ## The screener line
 
-Write one short screener line for the call.
+A screener connects the call only when it hears who calls and why. It listens for a short time only.
+So the agent tells it enough to get through, and no more. Write one short screener line for the call.
 
-- It gives the name of the agent or the caller and a neutral reason.
-- A neutral reason tells nothing private. "About a personal account matter" is neutral. An amount owed or a test result is not neutral.
-- It contains no private facts, no name of the target person, and no task message.
-- The agent says it once. Then it stays silent and waits.
-- If the screener talks over the line, the agent says it again once.
-- If the screener asks what the call is about, the agent gives one short, neutral sentence. It does not refuse to answer.
+- It says who calls, for whom, and a short reason. Example: "This is an automated call on behalf of ${business_name}. I have a short message to share."
+- When the screener asks who is calling, the agent always says for whom it calls.
+- After the line, the agent stays silent and waits. If the screener talks over the line, the agent says it again.
+- If the screener asks what the call is about, or asks for details, the agent sums up the topic in one short sentence, in its own words. Example: "It's about a change to your appointment time."
+- The summary adds no facts and no sensitive details. An amount owed or a test result is a sensitive detail.
+- The agent never refuses a screener's question. A screener that gets no answer does not connect the call.
+- The agent never gives the screener the full message or the main conversation.
 
 ## While the screener connects
 
@@ -45,13 +47,12 @@ Write one short screener line for the call.
 
 - A greeting spoken to the agent ends the screening. Examples: "Hello?", "Yes?", "Who's there?".
 - The agent speaks at once. It never answers a greeting with silence.
-- The agent says the full opener once, as if the call starts now.
-- The screener line does not replace the opener or any required disclosure.
+- The person did not hear what the agent told the screener. The agent greets the person and starts the main conversation, with any required disclosure.
 - If the person asks "Are you there?", the agent answers at once.
 
 ## A human screener
 
-- The agent answers "Who is calling?" in one sentence: the caller and a neutral reason.
+- The agent answers "Who is calling?" in one sentence: who calls, for whom, and a short reason.
 - It asks for the person or the team that the task names.
 - It does not give the full task message to the screener, unless the task says the screener can help.
 - It gives private facts only to the correct person.
@@ -64,7 +65,6 @@ Write one short screener line for the call.
 
 - The agent states the request once, in short form.
 - It answers the assistant's questions only from the facts in the task.
-- It does not say the full opener to the assistant.
 - It does not negotiate past the limits of the task.
 - If the assistant cannot help after about two exchanges, the agent ends the call politely.
 
@@ -72,7 +72,7 @@ Write one short screener line for the call.
 
 Write what the agent can say at each level. When the agent cannot tell the level, it uses the lowest.
 
-1. Anyone, including a screener or a household member: who the agent is, for whom it calls, and that the matter is for the target person only.
+1. Anyone, including a screener or a household member: who the agent is, for whom it calls, and a one-sentence summary of the topic with no sensitive details.
 2. A person who says they are the target person, before an identity check: the general purpose of the call, and the need to confirm identity.
 3. The confirmed target person: the full task message.
 
@@ -81,6 +81,5 @@ The agent never moves to a higher level because someone presses for more detail.
 ## Write these items into the instructions
 
 - The screener line, in full.
-- The neutral answer to "What is this about?".
+- The one-sentence summary for "What is this about?".
 - What the agent does when the screener will not connect the call.
-- The rule that the full opener goes only to the person.

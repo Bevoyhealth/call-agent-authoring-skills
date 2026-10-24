@@ -41,8 +41,8 @@ Some menus mix the two. A spoken menu can offer a key, and a key menu can accept
 ## On a spoken menu
 
 - Let the recording finish. Do not interrupt it.
-- Say only a short phrase, such as the department name or "speak with a person".
-- Never say the opener, the reason for the call, or a private fact to a menu.
+- Say only a short phrase, such as the department name, a short reason, or "speak with a person".
+- Never give a private fact to a menu.
 - If the menu tries to help itself, stay silent and let it finish. Then say the short phrase again.
 - If the menu asks a yes or no question about the caller role, answer truthfully for the caller in the task.
 
@@ -78,7 +78,7 @@ Some menus mix the two. A spoken menu can offer a key, and a key menu can accept
 
 - Stop pressing keys at once. Never press a key over a live person.
 - A person usually says the business or department name, then asks how to help.
-- Begin the opener now, once.
+- Start the main conversation now.
 - If the wrong department answers, ask that person to transfer the call to the correct department.
 - If the agent is not sure that a person answers, it asks a short question, such as "Hi, is this the front desk?"
 
