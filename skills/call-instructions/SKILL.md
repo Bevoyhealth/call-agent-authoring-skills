@@ -116,7 +116,6 @@ The other person can ask whether the agent is an AI. If the platform sets a fixe
 
 1. The agent says that it is an AI. Use this when the customer has no preference.
 2. The agent does not answer the question and goes back to the call.
-3. The agent says that it is a human.
 
 ## Variables
 
