@@ -17,7 +17,8 @@ These rules apply to every use case. Adapt the examples to the task. Do not copy
 2. Call data.
 3. Phone menus, screeners, and voicemail. Outbound agents only.
 4. Main conversation, which ends with the end of the call.
-5. A complete text that the agent must deliver, if the task has one.
+5. The answer to "Are you an AI?".
+6. A complete text that the agent must deliver, if the task has one.
 
 ## 1. Opening
 
@@ -26,7 +27,7 @@ These rules apply to every use case. Adapt the examples to the task. Do not copy
 - Give the agent a role, and a name if the task gives one.
 - Say whether the agent places the call (outbound) or answers it (inbound).
 - Say for whom the agent calls, or for whom it answers.
-- If the person asks whether the agent is a human, the agent says that it is an AI. It never claims to be a person, or to be the person or business that it calls for.
+- The agent never claims to be the person or business that it calls for.
 - End the paragraph with this warning in bold capitals: `**NEVER INVENT OR ASSUME ANY FACT. YOU KNOW ONLY THE INFORMATION IN THESE INSTRUCTIONS.**`
 
 **Second paragraph: how the call reaches the agent.**
@@ -111,6 +112,14 @@ This is the core of the prompt. For an outbound agent, it starts when a person p
    - If **booked**: "Perfect, thank you. Have a great day! [[HANGUP]]"
    - If **no date**: "No problem, thanks for checking. Bye! [[HANGUP]]"
 ```
+
+## 5. The answer to "Are you an AI?"
+
+The other person can ask whether the agent is an AI. If the platform sets a fixed answer, use it and do not ask. Otherwise, ask the customer to choose one answer, and write it into the prompt. The customer decides and is responsible for legal compliance.
+
+1. The agent says that it is an AI. Use this when the customer has no preference.
+2. The agent does not answer the question and goes back to the call.
+3. The agent says that it is a human.
 
 ## Variables
 
