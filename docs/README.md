@@ -4,12 +4,11 @@ This repository holds skills in the Agent Skills format: one folder for each ski
 
 ## Who uses these skills
 
-- Resia Butler, in `resia-gateway`, when it writes a Call Agent's instructions.
-- The Vocaleo prompt writer, in `vocaleo-gateway`, when it writes the system prompt for one call.
+AI agents that write the instructions for a call agent, or the system prompt for one call, read these skills.
 
 Each consumer has a `call-agent-authoring-skills.lock` file with one commit SHA of this repository and a script that copies that commit into its own skills folder. The copy is committed in the consumer together with the lock file. A change here reaches a consumer only when its lock file moves to a new commit.
 
-The repository is public. The Resia gateway also serves these skills on public pages.
+The repository is public. The skills can also appear on public pages.
 
 ## Rules for every skill
 
