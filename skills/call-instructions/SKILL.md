@@ -1,6 +1,6 @@
 ---
 name: call-instructions
-description: Write the instructions that an AI voice agent follows on a phone call, for an outbound or an inbound agent. Covers the order of the prompt, the opening, call data, phone menus, screeners, voicemail, the main conversation, the end of the call, variables, and length. Use this skill first for every call agent. Add phone-menus or phone-screeners when an outbound call can reach one.
+description: Write the instructions that an AI voice agent follows on a phone call, for an outbound or an inbound agent. Covers the order of the prompt, the opening, call data, phone menus, screeners, voicemail, the main conversation, the end of the call, variables, and length. Use this skill first for every call agent. For an outbound call, also use voicemail, and add phone-menus or phone-screeners when the call can reach one.
 ---
 
 # Instructions for a call agent
@@ -67,10 +67,7 @@ Decide which of these the call can meet. Add instructions only for those. An inb
 
 - **Phone menu** (IVR, interactive voice response). Common at large businesses, less common at small ones. Use the phone-menus skill.
 - **Call screener.** Some phones answer for the person and ask who calls and why. Common on personal numbers. Use the phone-screeners skill.
-- **Voicemail.** Any call can reach it. Ask the human whether the agent hangs up or leaves a message. If the platform has a voicemail setting, make the prompt match it.
-  - The agent treats the call as voicemail only when it is sure: a greeting that asks for a message, or a beep. A screener, or a menu option that takes a message, is not voicemail.
-  - To leave a message, the agent writes `[[VOICEMAIL]]` followed by the message. The system plays the message after the beep and then ends the call. The message says who calls, for whom, and the request. It gives a callback number only if the task gives one.
-  - If the agent must not leave a message, it says nothing to the recording and writes only `[[HANGUP]]`. A name or a topic on a recording is a privacy leak.
+- **Voicemail.** Any call can reach it. Use the voicemail skill.
 
 ## 4. Main conversation
 
