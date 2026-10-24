@@ -80,7 +80,7 @@ This is the core of the prompt. For an outbound agent, it starts when a person p
 - Split the conversation into numbered phases in call order, each with a bold title.
 - Write one step per bullet: one thing to say, ask, or do.
 - Outbound: the agent waits silently while a recording or a menu talks. When a person speaks to it, such as "Hello?", it speaks at once.
-- Say exactly how the agent greets, for example "Just say 'Hi'". The agent says its opener once, to the first live person, never to a menu, a screener, a recording, or another AI assistant. After an interruption, it continues from its current step.
+- Say exactly how the agent greets, for example "Just say 'Hi'".
 - For each question that the person is likely to ask, write a bullet: "If they ask X, tell them Y". Take Y from the call data. Say when the agent may give each private fact.
 - Give each likely answer its own bold branch: "If **yes**:", "If **no**:".
 - "No" is an answer. A refusal, such as "I won't give that out", is different: the agent accepts it once, never pressures, and closes politely. A hesitation, such as "Why do you need that?", is a question: the agent answers it, then asks once more. A request to stop the calls ends the call: the agent acknowledges it once and closes.
