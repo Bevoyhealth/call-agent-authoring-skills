@@ -1,114 +1,131 @@
 ---
 name: call-instructions
-description: Write the instructions that an AI voice agent follows on one phone call. Covers the opener, one goal per call, what to say only to a person, hold, voicemail, when to give up, a refused answer, missing facts, and when the call is done. Use this skill first for every call. Add phone-menus or phone-screeners when the call can reach one.
+description: Write the instructions that an AI voice agent follows on a phone call, for an outbound or an inbound agent. Covers the order of the prompt, the opening, call data, phone menus, screeners, voicemail, the main conversation, the end of the call, variables, and length. Use this skill first for every call agent. Add phone-menus or phone-screeners when an outbound call can reach one.
 ---
 
-# Writing instructions for a phone call
+# Instructions for a call agent
 
-You write the instructions for an AI voice agent on one phone call.
-The agent reads only what you write and what its product adds.
-Each product adds its own call controls, such as how to press a key, stay silent, or hang up.
-Do not write control syntax. Write the behavior in plain words, for example "press the key for billing" or "stay silent and listen".
-
+You write the instructions (the prompt) that an AI voice agent follows on a phone call.
+The agent knows only what the prompt says. Use only the facts that the task gives. Never invent a fact to fill a gap.
 Write direct instructions to the agent: "You are...", "When a person answers...".
-Use only the facts that the task gives. Never invent a fact to fill a gap.
+Write the prompt in Markdown. Start each section with a heading: `#` for level 1, `##` for level 2, `###` for level 3.
+These rules apply to every use case. Adapt the examples to the task. Do not copy them word for word.
 
-## Rules for the instructions
+## Order of the prompt
 
-1. Open with who is speaking and why, in one sentence. People hang up on a call that takes longer to explain itself.
-2. Cover the four things that happen on most calls: a receptionist who asks what the call is about, a phone menu, hold, and voicemail.
-3. Say when to give up. Without a limit, the agent keeps a person on the line.
-4. Give the call one goal. An agent that asks about two unrelated things gets neither answer.
-5. Say what to do when the person refuses to answer. A refusal is different from the answer "no".
+1. Opening, in three paragraphs.
+2. Call data.
+3. Phone menus, screeners, and voicemail. Outbound agents only.
+4. Main conversation, which ends with the end of the call.
+5. A complete text that the agent must deliver, if the task has one.
 
-## The opener
+## 1. Opening
 
-- Write one sentence: who the agent is, for whom it calls, and what it needs.
-- If the product or the law requires a disclosure, put it in the same sentence. Examples: the agent is an AI, or the line is recorded.
-- If the person asks whether the agent is a human, the agent says that it is an AI. It never claims to be a person, or the person or business that it calls for.
-- The agent says the opener once, to the first live person. It never repeats the full opener.
-- After an interruption, the agent continues from its current step. It does not start the call again.
-- An unclear reply gets a short question, not the opener again.
+**First paragraph: role.**
 
-## Say it only to a person
+- Give the agent a role, and a name if the task gives one.
+- Say whether the agent places the call (outbound) or answers it (inbound).
+- Say for whom the agent calls, or for whom it answers.
+- Put any disclosure that the product or the law requires here. Examples: the agent is an AI, or the line is recorded.
+- If the person asks whether the agent is a human, the agent says that it is an AI. It never claims to be a person, or to be the person or business that it calls for.
+- End the paragraph with this warning in bold capitals: `**NEVER INVENT OR ASSUME ANY FACT. YOU KNOW ONLY THE INFORMATION IN THESE INSTRUCTIONS.**`
 
-The target person is the person that the call is for.
-The opener and the task message are for a person only.
-The agent never says them to a phone menu, a screener, a recording, or another AI assistant.
+**Second paragraph: how the call reaches the agent.**
 
-- A person responds to the agent. A person asks a question, greets the agent, or reacts to what the agent said.
-- A recording speaks without a pause for the agent. It announces a name or a number, plays music, or beeps.
-- A greeting that is spoken to the agent, such as "Hello?", means a person is on the line. The agent speaks. Silence at a greeting sounds like a dead line, and the person hangs up.
-- Private facts go only to the correct person, after any identity check that the task requires. Do not give them to a household member, a wrong number, a screener, or a recording.
-- When the agent cannot tell who is on the line, it shares only what it may share with anyone.
+- Tell the agent that it is the language model in a speech-to-text → language model → text-to-speech pipeline.
+- Tell it to expect transcription errors in the other person's words. It assumes the most probable meaning and continues. It does not mention the error.
+- The agent confirms a value only when a wrong guess has a very high cost. The role of the value in the call sets the cost, not its type:
+  - Low cost: the prompt already gives the value, such as the name of the person it calls. The agent uses the value that it knows.
+  - High cost: the value is new, the outcome of the call depends on it, and the transcript does not match a plausible real value. Example: a new reference number or item name that does not exist. The agent asks the person to repeat or confirm it.
+- List the mission-critical information for this call: the values that the agent must get right. The agent uses this list to decide when to confirm. Too many confirmations annoy the person and sound unnatural. A missed confirmation of a crucial value can make the call fail.
+- Add this disclaimer word for word:
 
-## One goal per call
+  > DO NOT convey any of your internal thoughts. If you are planning your next steps, do not expose or describe it at all. Everything that you output is immediately spoken out loud by the text-to-speech engine. If you are waiting silently, do not indicate that, just return empty string or [[SILENCE]].
 
-- Write the goal in one sentence before you write the steps.
-- If the task needs three unrelated answers, write three calls.
-- Do not let the agent add requests or offers that the task does not ask for.
+**Third paragraph: tone and behavior.** Choose these for the use case:
 
-## Hold
+- Tone, for example professional, casual, or friendly.
+- Reply length. Default: one or two short sentences, with one question at a time.
+- Pace through the call, and patience when the person is slow or unclear.
 
-- Tell the agent that hold is normal and can last some minutes.
-- On hold, the agent stays on the line and stays silent. It does not speak to hold music or recorded messages.
-- When the agent puts a person on hold, it tells the person first. When it comes back, it speaks first, for example "Thanks for holding."
-- Give a hold limit when the task has one. Without a limit, the agent waits until a person answers or the line ends.
+## 2. Call data
 
-## Voicemail
+- List the facts that the agent may need to state, check, or give: names, dates, numbers, and the details of an item or a service.
+- Write one fact per line, each with a label.
+- Not every input is call data. A complete text that the agent must deliver, such as a full message, goes at the end of the prompt.
 
-The task decides whether the agent leaves a message.
+```markdown
+# Call data
+- Customer name: ${customer_name}
+- Account number: ${account_number}
+- Requested date: ${requested_date}
+```
 
-- If the task asks for a message or plainly permits one, write what the message contains. Usually that is who calls, for whom, the request, and a callback number only if the task gives one.
-- If the task does not permit a message, the agent hangs up without a message.
-- The agent treats the call as voicemail only when it is sure. Signs are a greeting that asks for a message, or a beep.
-- A screener is not voicemail. A phone menu option that offers to take a message is not voicemail.
-- When the agent must not leave a message, it says nothing to the recording. It hangs up before the opener. A name or a topic on a recording is a privacy leak.
+## 3. Phone menus, screeners, and voicemail (outbound only)
 
-## When to give up
+Decide which of these the call can meet. Add instructions only for those. An inbound agent meets none of them.
 
-Write each limit as a number. Use these defaults when the task gives none:
+- **Phone menu** (IVR, interactive voice response). Common at large businesses, less common at small ones. Use the phone-menus skill.
+- **Call screener.** Some phones answer for the person and ask who calls and why. Common on personal numbers. Use the phone-screeners skill.
+- **Voicemail.** Any call can reach it. Ask the human whether the agent hangs up or leaves a message. If the platform has a voicemail setting, make the prompt match it.
+  - The agent treats the call as voicemail only when it is sure: a greeting that asks for a message, or a beep. A screener, or a menu option that takes a message, is not voicemail.
+  - To leave a message, the agent writes `[[VOICEMAIL]]` followed by the message. The system plays the message after the beep and then ends the call. The message says who calls, for whom, and the request. It gives a callback number only if the task gives one.
+  - If the agent must not leave a message, it says nothing to the recording and writes only `[[HANGUP]]`. A name or a topic on a recording is a privacy leak.
 
-- The agent asks the same question three times at most. The second and third asks use simpler words.
-- After two silence checks with no answer, the agent says a short goodbye and ends the call.
-- If a screener or receptionist will not connect the call, the agent asks once for a better time or the right person. Then it ends the call.
-- If another AI assistant cannot help after about two exchanges, the agent ends the call politely.
-- If the person is not the target person, the agent asks once for a better time. It does not say why it called. A wrong number gets an apology and a goodbye.
+## 4. Main conversation
 
-## A refused answer is not "no"
+This is the core of the prompt. For an outbound agent, it starts when a person picks up. For an inbound agent, it starts when the agent answers.
 
-- "No" is an answer. The agent records it, thanks the person, and continues or closes.
-- A refusal means the person will not answer. Examples: "I won't give that out" or "I don't do this by phone". The agent accepts it once. It never pressures and never asks a third time. It closes politely.
-- A hesitation is a question, not a refusal. Examples: "Why do you need that?" or "Is this a scam?". The agent answers the question. Then it can ask once more, in a smaller form.
-- The agent never uses private facts to get an answer. It never trades more detail for cooperation.
-- A request to stop calling ends the call. The agent acknowledges it once, says it will pass it on, and closes.
-- Tell the agent how to report each case: answered, "no", refused, or not reached.
+- Give the call one goal, in one sentence. The agent does not add requests or offers that the task does not ask for.
+- Split the conversation into numbered phases in call order, each with a bold title.
+- Write one step per bullet: one thing to say, ask, or do.
+- Outbound: the agent waits silently while a recording or a menu talks. When a person speaks to it, such as "Hello?", it speaks at once.
+- Say exactly how the agent greets, for example "Just say 'Hi'". The agent says its opener once, to the first live person, never to a menu, a screener, a recording, or another AI assistant. After an interruption, it continues from its current step.
+- For each question that the person is likely to ask, write a bullet: "If they ask X, tell them Y". Take Y from the call data. Say when the agent may give each private fact.
+- Give each likely answer its own bold branch: "If **yes**:", "If **no**:".
+- "No" is an answer. A refusal, such as "I won't give that out", is different: the agent accepts it once, never pressures, and closes politely. A hesitation, such as "Why do you need that?", is a question: the agent answers it, then asks once more. A request to stop the calls ends the call: the agent acknowledges it once and closes.
+- When the agent does not have a fact, it says so. It offers only what the task permits, such as to pass the question on. It never promises an action, a time, or a result.
+- When the person asks a question, the next turn answers it. When the agent does not know what to say next, it goes back to the main question of the call.
+- Hold is normal. On hold, the agent writes `[[SILENCE]]` and does not speak to music or recordings. Give a hold limit when the task has one.
+- When the agent sees `[[silence — no response for N seconds]]`, it repeats its last question in short form or asks "Are you still there?". After two checks with no answer, it says goodbye and ends the call.
+- Write each limit as a number. Default: the agent asks the same question three times at most.
+- Outbound agents: add this rule in bold, unless the human says otherwise: `**Never under any circumstance** ask the person "How can I assist you today?"`. Language models tend to ask it, and it is awkward when the agent placed the call. Leave it out of an inbound prompt.
 
-## Missing facts
-
-Say what the agent does when it does not have a fact.
-
-- The agent says that it does not have that detail. It never guesses.
-- Then it offers what the task permits: to pass the question on, to give a callback number, or to send the person to the usual channel.
-- The agent never promises an action, a time, or a result that the task does not permit.
-- If a phone menu asks for an account number that the task does not give, the agent does not guess one.
-
-## Done when
+**End of the call.**
 
 - Write the specific answer or event that ends the call.
-- When the agent has it, it states what it will pass on in one sentence. Then it thanks the person and ends the call.
-- The goodbye is a turn of its own. It does not contain a question.
-- If the person speaks again before the call ends, the agent answers and then closes again.
-- The agent does not ask the person to confirm an answer that was already clear.
+- For each outcome, write a closing step with an example line, such as "Thanks for checking. Have a great day! [[HANGUP]]".
+- If the person already said a closing phrase, such as "bye", "have a good day", or a final "thanks", the agent says goodbye and writes `[[HANGUP]]` in the same turn. It does not stay on the line. A "thanks" in the middle of the call, such as "Thanks, one moment", is not a closing phrase.
+- If the goodbye gets silence, the agent writes only `[[HANGUP]]`.
+- The agent never ends the call while the person speaks. It never says why it ends the call.
 
-## Answer the question that the person asks
+```markdown
+# Instructions
+1. **Reach a person**
+   - Wait silently while a recording or a menu talks.
+2. **Main exchange**
+   - Say "Hi". Then ask whether ${service_name} is available on ${requested_date}.
+   - If they ask for the customer's name, give ${customer_name}.
+   - If **available**: ask for the earliest open time, and confirm it once.
+   - If **not available**: ask for the next open date.
+3. **End the call**
+   - If **booked**: "Perfect, thank you. Have a great day! [[HANGUP]]"
+   - If **no date**: "No problem, thanks for checking. Bye! [[HANGUP]]"
+```
 
-- When the person asks a question, the next turn answers it. Then the agent asks its own open question again, in short form.
-- "What?" or "Say that again" gets a shorter version of the current question, not a new explanation.
-- Each turn is one or two short sentences, with one question at a time.
+## Variables
+
+When the platform fills the prompt for each call, write each input as `$name` or `${name}`.
+
+- Use `${name}` when a letter, a digit, or an underscore comes directly after the variable.
+- Use only variables that are declared inputs of the agent. An optional input with no value becomes empty text.
+- Write `$$` for a literal dollar sign. Any other `$` that does not start a valid variable makes the call fail.
+- Do not use `{name}` or `{{name}}`.
+- Describe values that the agent learns during the call in plain words. Do not make them inputs.
 
 ## Keep it short
 
-- Remove rules that do not apply to this call.
-- A simple call needs only the opener, the goal, the voicemail choice, and the done-when.
-- A business call that can reach a phone menu or a screener also needs those skills.
+- A longer prompt makes the agent follow it less closely. With too many instructions, the agent forgets some of them.
+- Each sentence is a tradeoff between overload and a missing instruction. Keep a sentence only when it changes what the agent does on this call.
+- After the first draft, do a second pass. Remove what does not apply. Combine and deduplicate rules. Shorten long instructions.
+- Aim for fewer than 500 words. Never exceed 3000 words.

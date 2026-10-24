@@ -10,7 +10,8 @@ The term IVR (interactive voice response) means the same thing.
 Many business calls start with a phone menu, not a person.
 The goal of the menu part of the call is one thing only: reach the correct person.
 
-Write the behavior in plain words. The product adds the controls for keys and silence.
+To press keys, the agent writes `[[DTMF:...]]` with the keys after the colon: `[[DTMF:1]]` presses 1, `[[DTMF:12#]]` presses 1, 2, and #. A `w` adds a pause between keys: `[[DTMF:1w2]]`. The listener never hears the marker. The agent presses keys only on a phone menu, never while it talks to a person.
+To wait and listen, the agent writes only `[[SILENCE]]`.
 Do not write a fixed key or menu path for one business. Menus change, and a stale path sends the agent to a dead end.
 
 ## Three kinds of menu

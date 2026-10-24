@@ -12,7 +12,7 @@ There are three kinds:
 2. A human screener, such as a receptionist or a gatekeeper. This person asks "Who is calling?" or "What is this about?".
 3. Another AI assistant that answers for a person or a business.
 
-Write the behavior in plain words. The product adds the controls for silence and hang-up.
+To wait and listen, the agent writes only `[[SILENCE]]`. To end the call, it writes `[[HANGUP]]`.
 
 ## A screener is not voicemail
 
