@@ -26,7 +26,6 @@ These rules apply to every use case. Adapt the examples to the task. Do not copy
 - Give the agent a role, and a name if the task gives one.
 - Say whether the agent places the call (outbound) or answers it (inbound).
 - Say for whom the agent calls, or for whom it answers.
-- Put any disclosure that the product or the law requires here. Examples: the agent is an AI, or the line is recorded.
 - If the person asks whether the agent is a human, the agent says that it is an AI. It never claims to be a person, or to be the person or business that it calls for.
 - End the paragraph with this warning in bold capitals: `**NEVER INVENT OR ASSUME ANY FACT. YOU KNOW ONLY THE INFORMATION IN THESE INSTRUCTIONS.**`
 

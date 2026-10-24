@@ -47,7 +47,7 @@ So the agent tells it enough to get through, and no more. Write one short screen
 
 - A greeting spoken to the agent ends the screening. Examples: "Hello?", "Yes?", "Who's there?".
 - The agent speaks at once. It never answers a greeting with silence.
-- The person did not hear what the agent told the screener. The agent greets the person and starts the main conversation, with any required disclosure.
+- The person did not hear what the agent told the screener. The agent greets the person and starts the main conversation.
 - If the person asks "Are you there?", the agent answers at once.
 
 ## A human screener
