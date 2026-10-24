@@ -1,6 +1,6 @@
 ---
 name: phone-menus
-description: Write instructions that get an AI voice agent through an automated phone menu (IVR) to a person. Covers key menus, spoken menus, hold, loops, dead ends, and a section of general patterns for pharmacy phone menus. Use when the call goes to a business that can answer with a recorded menu.
+description: Write instructions that get an AI voice agent through an automated phone menu (IVR) to a person. Covers key menus, spoken menus, hold, loops, dead ends, and common patterns on the menus of large businesses. Use when the call goes to a business that can answer with a recorded menu.
 ---
 
 # Getting through a phone menu
@@ -17,7 +17,7 @@ Do not write a fixed key or menu path for one business. Menus change, and a stal
 
 Tell the agent to find out which kind it hears.
 
-1. Key menu. The recording reads numbered options: "For the pharmacy, press 1."
+1. Key menu. The recording reads numbered options: "For billing, press 1."
 2. Spoken menu. The recording asks an open question: "How can I help you today?"
 3. No menu. The line rings, plays hold music, or a person answers. The agent waits and presses nothing.
 
@@ -34,7 +34,7 @@ Some menus mix the two. A spoken menu can offer a key, and a key menu can accept
   2. An option for the caller role that the task gives.
   3. The correct department.
   4. An operator, a representative, or "all other questions".
-- Skip self-service options unless they offer a person: hours, address, status, refills by number, website, app, and surveys.
+- Skip self-service options unless they offer a person: hours, address, status, payments or orders by number, website, app, and surveys.
 - Do not stay silent through a whole key menu. Some menus end the call when nobody chooses.
 
 ## On a spoken menu
@@ -79,20 +79,17 @@ Some menus mix the two. A spoken menu can offer a key, and a key menu can accept
 - A person usually says the business or department name, then asks how to help.
 - Begin the opener now, once.
 - If the wrong department answers, ask that person to transfer the call to the correct department.
-- If the agent is not sure that a person answers, it asks a short question, such as "Hi, is this the pharmacy?"
+- If the agent is not sure that a person answers, it asks a short question, such as "Hi, is this the front desk?"
 
-## Pharmacy phone menus
+## Common patterns on large-business menus
 
-These patterns are common on pharmacy lines. They are general patterns, not facts about one pharmacy.
+These patterns are common on the menus of large businesses, such as stores, banks, utilities, and clinics. They are general patterns, not facts about one business.
 
-- The store menu often lists departments first. Choose the pharmacy.
-- The pharmacy menu often asks about the caller role, for example "Are you a health care provider?". Answer only with the role that is true for the caller in the task.
-- A route for health care providers often leads to a message box, a new-prescription line, or a return-call line. Choose "speak with pharmacy staff" or "pharmacist" over these.
-- Spoken pharmacy menus often accept "pharmacy" first. If they ask again, use "speak with pharmacy staff" or "pharmacist".
-- A refill menu often asks for a prescription number. Do not enter digits. Choose staff, or wait for the menu to continue.
-- Expect long promotions about vaccines, apps, and websites. Stay silent through them.
-- Expect a queue. "Our staff is helping other customers" means wait.
-- If the menu says the pharmacy is closed or on a break, end the call. Follow the voicemail choice of the task.
-- If a store associate answers, ask for a transfer to the pharmacy.
-- Give no patient or medicine details to the menu. Give them only to pharmacy staff, and only when the task permits.
-- Ask the task question only after a person from the pharmacy speaks.
+- The main menu often lists departments first. Choose the department that the task needs.
+- The department menu often asks about the caller role, for example "Are you a customer or a business partner?". Answer only with the role that is true for the caller in the task.
+- A route for business callers often leads to a message box, an order line, or a return-call line. Choose an option to speak with staff over these.
+- A spoken menu often accepts the department name first. If it asks again, say "speak with staff" or "representative".
+- Expect long promotions about offers, apps, and websites. Stay silent through them.
+- If the menu says the department is closed or on a break, end the call. Follow the voicemail choice of the task.
+- Give no private details to the menu. Give them only to staff of the correct department, and only when the task permits.
+- Ask the task question only after a person from the correct department speaks.

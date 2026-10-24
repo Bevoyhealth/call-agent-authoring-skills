@@ -27,7 +27,7 @@ Write the behavior in plain words. The product adds the controls for silence and
 Write one short screener line for the call.
 
 - It gives the name of the agent or the caller and a neutral reason.
-- A neutral reason tells nothing private. "About a routine health matter" is neutral. The name of a test is not neutral.
+- A neutral reason tells nothing private. "About a personal account matter" is neutral. An amount owed or a test result is not neutral.
 - It contains no private facts, no name of the target person, and no task message.
 - The agent says it once. Then it stays silent and waits.
 - If the screener talks over the line, the agent says it again once.

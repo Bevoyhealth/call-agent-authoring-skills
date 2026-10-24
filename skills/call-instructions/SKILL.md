@@ -8,7 +8,7 @@ description: Write the instructions that an AI voice agent follows on one phone 
 You write the instructions for an AI voice agent on one phone call.
 The agent reads only what you write and what its product adds.
 Each product adds its own call controls, such as how to press a key, stay silent, or hang up.
-Do not write control syntax. Write the behavior in plain words, for example "press the key for the pharmacy" or "stay silent and listen".
+Do not write control syntax. Write the behavior in plain words, for example "press the key for billing" or "stay silent and listen".
 
 Write direct instructions to the agent: "You are...", "When a person answers...".
 Use only the facts that the task gives. Never invent a fact to fill a gap.

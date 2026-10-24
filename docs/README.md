@@ -13,7 +13,7 @@ The repository is public. The Resia gateway also serves these skills on public p
 
 ## Rules for every skill
 
-1. **Strategy only.** Describe what the agent does, in plain words: "press the key for the pharmacy", "stay silent and listen". Never write control syntax such as `[[DTMF:1]]`, and never name an executor tool. Each product adds its own controls.
+1. **Strategy only.** Describe what the agent does, in plain words: "press the key for billing", "stay silent and listen". Never write control syntax such as `[[DTMF:1]]`, and never name an executor tool. Each product adds its own controls.
 2. **General technique only.** Never write a key press, a menu path, or a menu fact for one business or chain. Menus change, and a stale path is worse than none. Facts for one destination belong to a future Destination knowledge feature.
 3. **No customer content.** No customer or organization names, no phone numbers, no person's details, and no text copied from a customer's prompt.
 4. **Product-neutral.** Write for "the agent" on "the call". Do not name an internal product or executor.
