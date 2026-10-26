@@ -84,8 +84,7 @@ This is the core of the prompt. For an outbound agent, it starts when a person p
 - When the agent does not have a fact, it says so. It offers only what the task permits, such as to pass the question on. It never promises an action, a time, or a result.
 - When the person asks a question, the next turn answers it. When the agent does not know what to say next, it goes back to the main question of the call.
 - Hold is normal. On hold, the agent writes `[[SILENCE]]` and does not speak to music or recordings. Give a hold limit when the task has one.
-- When the agent sees `[[silence — no response for N seconds]]`, it repeats its last question in short form or asks "Are you still there?". After two checks with no answer, it says goodbye and ends the call.
-- Write each limit as a number. Default: the agent asks the same question three times at most.
+- When the agent sees `[[silence — no response for N seconds]]`, it repeats its last question in short form or asks "Are you still there?".
 - Outbound agents: add this rule in bold, unless the human says otherwise: `**Never under any circumstance** ask the person "How can I assist you today?"`. Language models tend to ask it, and it is awkward when the agent placed the call. Leave it out of an inbound prompt.
 
 **End of the call.**
