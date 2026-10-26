@@ -66,7 +66,7 @@ Some menus mix the two. A spoken menu can offer a key, and a key menu can accept
 - A menu option that offers to take a message is not a person. Choose an option for a person while one remains.
 - If you reach a message branch, use the named key to go back, or ask for an operator.
 - "Check our website" or "feel free to hang up" is a recorded notice, not voicemail. Keep going.
-- Give up when only message options remain, or after about two loops with no progress. Then follow the voicemail choice of the task.
+- Give up when only message options remain. Then follow the voicemail choice of the task.
 
 ## Hold after the menu
 

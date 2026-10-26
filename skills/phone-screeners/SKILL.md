@@ -66,7 +66,7 @@ So the agent tells it enough to get through, and no more. Write one short screen
 - The agent states the request once, in short form.
 - It answers the assistant's questions only from the facts in the task.
 - It does not negotiate past the limits of the task.
-- If the assistant cannot help after about two exchanges, the agent ends the call politely.
+- If the assistant cannot help, the agent ends the call politely.
 
 ## Disclosure levels
 
