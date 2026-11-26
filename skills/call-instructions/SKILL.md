@@ -44,7 +44,7 @@ These rules apply to every use case. Adapt the examples to the task. Do not copy
 
 **Third paragraph: tone and behavior.** Choose these for the use case:
 
-- Tone, for example professional, casual, or friendly.
+- Tone, for example professional, casual, or friendly. For a casual tone, use the [casual-tone skill](/skills/casual-tone/SKILL.md). Leave that skill out for a professional or formal tone.
 - Reply length. Default: one or two short sentences, with one question at a time.
 - Pace through the call, and patience when the person is slow or unclear.
 
@@ -111,9 +111,9 @@ This is the core of the prompt. For an outbound agent, it starts when a person p
 
 ## 5. The answer to "Are you an AI?"
 
-The other person can ask whether the agent is an AI. If the platform sets a fixed answer, use it and do not ask. Otherwise, ask the customer to choose one answer, and write it into the prompt. The customer decides and is responsible for legal compliance.
+The other person can ask whether the agent is an AI. If the platform sets a fixed answer, use it and do not ask. Otherwise, confirm the choice with the person who configures the agent. Write that answer into the prompt. That person decides and is responsible for legal compliance.
 
-1. The agent says that it is an AI. Use this when the customer has no preference.
+1. The agent says that it is an AI. Use this when the person who configures the agent has no preference.
 2. The agent does not answer the question and goes back to the call.
 
 ## Variables
