@@ -52,7 +52,7 @@ Do not add a tic to fixed text that the agent must say word for word.
 
 An emotion cue tells a voice how to say the words that follow it.
 Use a cue only when the selected voice and the service that runs the call support it.
-Use the Fish single-bracket cue form, for example "[surprised] huh, that's unexpected".
+Write an emotion cue in single square brackets, for example "[surprised] huh, that's unexpected".
 The cue expresses surprise; "huh" is the spoken tic.
 A service adapter translates supported cues into the selected voice's syntax.
 The adapter drops cues that the voice cannot express.
